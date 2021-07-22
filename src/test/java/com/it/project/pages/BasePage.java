@@ -1,18 +1,12 @@
 package com.it.project.pages;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.it.project.driver.DriverFactory;
+import com.it.project.driver.MyDriver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-    static protected WebDriver driver;
-    static {
-        WebDriverManager.chromedriver().setup();
-         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.i.ua/");
-    }
+      public static MyDriver driver = MyDriver.getMyDriver();
 
     public BasePage() {
         PageFactory.initElements(driver, this);
